@@ -3,3 +3,9 @@ node_modules/
 
 # temp files
 *.swp
+
+# generated test files
+test/
+
+# but keep test resources
+!test/sample.nugg
