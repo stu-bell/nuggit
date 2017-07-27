@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const xpath = require('xpath'),
-xmldom = require('xmldom').DOMParser,
-xmlserialize = require('xmldom').XMLSerializer,
+xml = require('simple-xml-dom'),
 fs = require('fs'),
 R = require('ramda'),
 S = require('./scb-helper'),
@@ -27,7 +26,7 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 	console.log(t.msgFileLoaded, sSourcePath);
 
 	// parse
-	var oDoc = new xmldom().parseFromString(data, 'application/xml');
+	var oDoc = xml.parse(data);
 
 	// select nodes
 	aNodes = xpath.select("(/nugget/CLAS|/nugget/PROG)", oDoc);
@@ -35,11 +34,11 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 	// process each selected node
 	R.map(oNode => {
 		// add contents to new nugget
-		var oNugg = new xmldom().parseFromString(sEmptyNugg, 'application/xml');
+		var oNugg = xml.parse(sEmptyNugg);
 		// add node to nugg
 		S.nuggAdd(oNugg, [oNode]);
 		// serialize node to XML string
-		var sXML = new xmlserialize().serializeToString(oNugg),
+		var sXML = xml.serialize(oNugg),
 		// TODO: check path exists, create if not
 		// use objectname from as filename
 		sPath = S.jPath(sTargetPath, S.getObjectName(oNode) + sFileExtNugg);

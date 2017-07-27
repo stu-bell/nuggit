@@ -6,6 +6,7 @@
   "dependencies": {
     "xpath": "^0.0.24",
     "xmldom": "^0.1.27",
+    "simple-xml-dom": "^1.0.0",
     "ramda": "^0.24.1"
   },
   "scripts": {
