@@ -6,13 +6,12 @@ fs = require('fs'),
 R = require('ramda'),
 sSourcePath = process.argv[2],
 sEmptyNugg = '<?xml version="1.0" encoding="utf-16"?><nugget name="NAME"></nugget>',
-
+sFileExtAbap = '.abap',
+sFileExtNugg = '.nugg',
 t = {
-	msgProcessingFile: "Processing file: "
+	msgFileLoaded: "Processing file: ",
+	msgFileWritten: "File saved: "
 };
-
-// log
-console.log(t.msgProcessingFile, sSourcePath);
 
 // process the main source file
 fs.readFile(sSourcePath, 'utf8', (err, data) => {
@@ -22,6 +21,9 @@ var R = require('ramda'); // for debugging only -
 	if (err) {
 		throw err;
 	}
+
+	// log
+	console.log(t.msgFileLoaded, sSourcePath);
 
 	// parse
 	var oDoc = new xmldom().parseFromString(data, 'application/xml');
@@ -38,7 +40,12 @@ var R = require('ramda'); // for debugging only -
 		// serialize node to XML string
 		var sXML = new xmlserialize().serializeToString(oNugg);
 		// write to file
-		console.log(sXML);
+		fs.writeFile("output" + sFileExtNugg, sXML, err => {
+			if(err) {
+				throw err;
+			}
+			console.log(t.msgFileWritten, sFileExt);
+		});
 	}, aNodes);
 
 });
