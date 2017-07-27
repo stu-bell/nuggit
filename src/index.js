@@ -26,8 +26,6 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 	// log
 	console.log(t.msgFileLoaded, sSourcePath);
 
-	console.log('2* 3= ', S.double(3));
-
 	// parse
 	var oDoc = new xmldom().parseFromString(data, 'application/xml');
 
@@ -38,8 +36,8 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 	R.map(oNode => {
 		// add contents to new nugget
 		var oNugg = new xmldom().parseFromString(sEmptyNugg, 'application/xml');
-		// assume the nugget node is the first childnode
-		oNugg.childNodes[1].appendChild(oNode);
+		// add node to nugg
+		S.nuggAdd(oNugg, [oNode]);
 		// serialize node to XML string
 		var sXML = new xmlserialize().serializeToString(oNugg),
 		// TODO: check path exists, create if not

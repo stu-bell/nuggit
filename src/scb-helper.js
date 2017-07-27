@@ -1,8 +1,7 @@
 var R = require('ramda');
 
 var S = {
-	multiply: R.multiply
+	nuggAdd: (oNugg, aNodes) => R.map(oNode => oNugg.childNodes[1].appendChild(oNode), aNodes)	// assume the nugget node is the first childnode
 };
-S.double = S.multiply(2);
 
 module.exports = S;
