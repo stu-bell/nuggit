@@ -1,6 +1,7 @@
 var R = require('ramda');
 
 var S = {
+	jPath : R.unapply(R.join('/')),
 	nuggAdd: (oNugg, aNodes) => R.map(oNode => oNugg.childNodes[1].appendChild(oNode), aNodes),	// assume the nugget node is the first childnode
 	getNameAttribute: R.cond([
 		[R.propEq('nodeName', 'CLAS'), R.always('CLSNAME')],

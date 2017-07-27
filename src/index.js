@@ -42,7 +42,7 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 		var sXML = new xmlserialize().serializeToString(oNugg),
 		// TODO: check path exists, create if not
 		// use objectname from as filename
-		sPath = R.join('/', [sTargetPath, S.getObjectName(oNode) + sFileExtNugg]);
+		sPath = S.jPath(sTargetPath, S.getObjectName(oNode) + sFileExtNugg);
 		// write to file
 		// TODO: warning if overwriting file
 		fs.writeFile(sPath, sXML, err => {
