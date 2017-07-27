@@ -5,6 +5,7 @@ xmlserialize = require('xmldom').XMLSerializer,
 fs = require('fs'),
 R = require('ramda'),
 sSourcePath = process.argv[2],
+sTargetPath = R.defaultTo('.', process.argv[3]),
 sEmptyNugg = '<?xml version="1.0" encoding="utf-16"?><nugget name="NAME"></nugget>',
 sFileExtAbap = '.abap',
 sFileExtNugg = '.nugg',
@@ -38,14 +39,16 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 		oNugg.childNodes[1].appendChild(oNode);
 		// serialize node to XML string
 		var sXML = new xmlserialize().serializeToString(oNugg),
+		// TODO: check path exists, create if not
 		// use objectname from as filename
-		sName = oNode.getAttribute("CLSNAME") + sFileExtNugg;
+		sPath = R.join('/', [sTargetPath, oNode.getAttribute("CLSNAME") + sFileExtNugg]);
+
 		// write to file
-		fs.writeFile(sName, sXML, err => {
+		fs.writeFile(sPath, sXML, err => {
 			if(err) {
 				throw err;
 			}
-			console.log(t.msgFileWritten, sName);
+			console.log(t.msgFileWritten, sPath);
 		});
 	}, aNodes);
 
