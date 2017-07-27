@@ -29,7 +29,7 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 	var oDoc = new xmldom().parseFromString(data, 'application/xml');
 
 	// select nodes
-	aNodes = xpath.select("/nugget/CLAS", oDoc);
+	aNodes = xpath.select("(/nugget/CLAS|/nugget/PROG)", oDoc);
 
 	// process each selected node
 	R.map(oNode => {
@@ -44,6 +44,7 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 		sPath = R.join('/', [sTargetPath, oNode.getAttribute("CLSNAME") + sFileExtNugg]);
 
 		// write to file
+		// TODO: warning if overwriting file
 		fs.writeFile(sPath, sXML, err => {
 			if(err) {
 				throw err;
