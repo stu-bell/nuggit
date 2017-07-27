@@ -5,7 +5,7 @@ Assumes use from command line
 
 |Command  |Description|
 |---|---  |
-|`nuggit` |Run main command|
+|`nuggit <source.nugg>` |Split out classes from the main source.nugg |
 
 # dev
 `node --inspect --debug-brk src/index.js ../dev/saplink-nugget-split/test.nugg`

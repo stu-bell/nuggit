@@ -29,7 +29,7 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 	var oDoc = new xmldom().parseFromString(data, 'application/xml');
 
 	// select nodes
-	aNodes = xpath.select("//CLAS", oDoc);
+	aNodes = xpath.select("/nugget/CLAS", oDoc);
 
 	// process each selected node
 	R.map(oNode => {
