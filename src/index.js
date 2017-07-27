@@ -15,7 +15,6 @@ t = {
 
 // process the main source file
 fs.readFile(sSourcePath, 'utf8', (err, data) => {
-var R = require('ramda'); // for debugging only -
 
 	// error handlign
 	if (err) {
@@ -34,17 +33,19 @@ var R = require('ramda'); // for debugging only -
 	// process each selected node
 	R.map(oNode => {
 		// add contents to new nugget
-		oNugg = new xmldom().parseFromString(sEmptyNugg, 'application/xml');
+		var oNugg = new xmldom().parseFromString(sEmptyNugg, 'application/xml');
 		// assume the nugget node is the first childnode
 		oNugg.childNodes[1].appendChild(oNode);
 		// serialize node to XML string
-		var sXML = new xmlserialize().serializeToString(oNugg);
+		var sXML = new xmlserialize().serializeToString(oNugg),
+		// use objectname from as filename
+		sName = oNode.getAttribute("CLSNAME") + sFileExtNugg;
 		// write to file
-		fs.writeFile("output" + sFileExtNugg, sXML, err => {
+		fs.writeFile(sName, sXML, err => {
 			if(err) {
 				throw err;
 			}
-			console.log(t.msgFileWritten, sFileExt);
+			console.log(t.msgFileWritten, sName);
 		});
 	}, aNodes);
 
