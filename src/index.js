@@ -4,6 +4,7 @@ xmldom = require('xmldom').DOMParser,
 xmlserialize = require('xmldom').XMLSerializer,
 fs = require('fs'),
 R = require('ramda'),
+S = require('./scb-helper'),
 sSourcePath = process.argv[2],
 sTargetPath = R.defaultTo('.', process.argv[3]),
 sEmptyNugg = '<?xml version="1.0" encoding="utf-16"?><nugget name="NAME"></nugget>',
@@ -24,6 +25,8 @@ fs.readFile(sSourcePath, 'utf8', (err, data) => {
 
 	// log
 	console.log(t.msgFileLoaded, sSourcePath);
+
+	console.log('2* 3= ', S.double(3));
 
 	// parse
 	var oDoc = new xmldom().parseFromString(data, 'application/xml');
