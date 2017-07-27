@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "Extract programs and classes from a saplink nugget in a more human readable way. Also git",
   "main": "src/index.js",
+  "dependencies": {
+    "xpath": "^0.0.24",
+    "xmldom": "^0.1.27"
+  },
   "scripts": {
     "test": ""
   },
-"bin": {
-"nuggit": "src/index.js"
+  "bin": {
+    "nuggit": "src/index.js"
 
-},
+  },
   "keywords": [
     "saplink",
     "git"
