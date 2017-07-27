@@ -5,6 +5,7 @@ xmlserialize = require('xmldom').XMLSerializer,
 fs = require('fs'),
 R = require('ramda'),
 sSourcePath = process.argv[2],
+sEmptyNugg = '<?xml version="1.0" encoding="utf-16"?><nugget name="NAME"></nugget>',
 
 t = {
 	msgProcessingFile: "Processing file: "
@@ -23,15 +24,19 @@ var R = require('ramda'); // for debugging only -
 	}
 
 	// parse
-	var oDoc = new xmldom().parseFromString(data, 'application/xml'),
+	var oDoc = new xmldom().parseFromString(data, 'application/xml');
 
 	// select nodes
 	aNodes = xpath.select("//CLAS", oDoc);
 
 	// process each selected node
 	R.map(oNode => {
+		// add contents to new nugget
+		oNugg = new xmldom().parseFromString(sEmptyNugg, 'application/xml');
+		// assume the nugget node is the first childnode
+		oNugg.childNodes[1].appendChild(oNode);
 		// serialize node to XML string
-		var sXML = new xmlserialize().serializeToString(oNode);
+		var sXML = new xmlserialize().serializeToString(oNugg);
 		// write to file
 		console.log(sXML);
 	}, aNodes);
