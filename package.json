@@ -1,7 +1,7 @@
 {
-  "name": "saplink-nugget-split",
+  "name": "nuggit",
   "version": "1.0.0",
-  "description": "Extract programs and classes from a saplink nugget in a more human readable way. Also git",
+  "description": "Extract programs and classes from a saplink nugget in a more human readable way",
   "main": "src/index.js",
   "dependencies": {
     "xpath": "^0.0.24",
@@ -22,8 +22,9 @@
   },
   "keywords": [
     "saplink",
-    "git"
+    "abap",
+    "sap"
   ],
-  "author": "scb",
+  "author": "stu-b-doo",
   "license": "ISC"
 }
