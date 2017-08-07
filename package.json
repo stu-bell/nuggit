@@ -10,7 +10,8 @@
     "unescape": "^1.0.1",
     "xml2js": "^0.4.17",
     "ejs": "^2.5.6",
-    "ramda": "^0.24.1"
+    "ramda": "^0.24.1",
+    "node-flags": "^0.1.9"
   },
   "scripts": {
     "test": ""

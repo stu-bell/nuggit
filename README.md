@@ -5,15 +5,17 @@ Assumes use from command line
 
 |Command  |Description|
 |---|---  |
-|`nuggit <source.nugg>` |Split out classes from the main source.nugg |
+|`nuggit <path/to/source.nugg> [options]``|Split out classes from the main source.nugg |
+
+|Option |Description|
+|--|--|
+|--list| Outputs a list of objects in a nugget that can be parsed by this program |
+
 
 # dev
 `node --inspect --debug-brk src/index.js ../dev/saplink-nugget-split/test.nugg`
 
 # TODO
-Other places tasks might be listed:
+Places tasks might be listed:
 - TODO/FIXME tags throughout source code
 - [Repository issues on GitLab](https://git.bluefinsolutions.com/sbell/nuggit/issues)
-
-# Features TODO
-- option to output list progs, classes, FMs in a nugget
