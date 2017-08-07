@@ -22,6 +22,9 @@ Argument description in table below.
 |`<directory>`   |*Optional* Path to output directory if different from current directory |
 |`--list`| *Optional* Outputs a list of objects in a nugget that can be parsed by this program |
 
+# Issues
+Raise issues on [GitHub](https://github.com/stu-b-doo/nuggit/issues)
+
 # TODO
 ## Features TODO
 - option to specify a single object to extract, as opposed to all of the programs?

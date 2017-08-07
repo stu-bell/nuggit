@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "Extract programs and classes from a saplink nugget in a more human readable way",
   "main": "src/index.js",
+  "repository": "https://github.com/stu-b-doo/nuggit",
   "dependencies": {
     "xpath": "^0.0.24",
     "xmldom": "^0.1.27",
