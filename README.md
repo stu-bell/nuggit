@@ -2,18 +2,25 @@
 
 Tool for parsing [SAPLink nuggets](https://wiki.scn.sap.com/wiki/display/ABAP/SAPlink)
 
-Currently use case is extracting (outside of an SAP system) individual programs or classes from large nugg files.
+Current use case is extracting (outside of an SAP system) individual programs or classes from large nugg files.
+
+# Installation
+
+`npm install -g nuggit`
 
 # Usage
-Assumes use from command line
+Assumes use from command line.
 
-|Command  |Description|
-|---|---  |
-|`nuggit <path/to/source.nugg> [, <output/path>] [options]``|Split a big nugget into smaller nuggets |
+## Split a big nugget into smaller nuggets
+Argument description in table below.
 
-|Option |Description|
+`nuggit <source.nugg> [<directory>] [--list]`
+
+|Argument  |Description
 |--|--|
-|--list| Outputs a list of objects in a nugget that can be parsed by this program |
+|`<source.nugg>` |Path to source nugget |
+|`<directory>`   |*Optional* Path to output directory if different from current directory |
+|`--list`| *Optional* Outputs a list of objects in a nugget that can be parsed by this program |
 
 # TODO
 ## Features TODO
