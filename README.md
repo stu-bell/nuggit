@@ -9,3 +9,11 @@ Assumes use from command line
 
 # dev
 `node --inspect --debug-brk src/index.js ../dev/saplink-nugget-split/test.nugg`
+
+# TODO
+Other places tasks might be listed:
+- TODO/FIXME tags throughout source code
+- [Repository issues on GitLab](https://git.bluefinsolutions.com/sbell/nuggit/issues)
+
+# Features TODO
+- option to output list progs, classes, FMs in a nugget
