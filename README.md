@@ -19,3 +19,9 @@ Assumes use from command line
 Places tasks might be listed:
 - TODO/FIXME tags throughout source code
 - [Repository issues on GitLab](https://git.bluefinsolutions.com/sbell/nuggit/issues)
+
+## Features TODO
+- option to specify a single object to extract, as opposed to all of the programs?
+- function module source code?
+- unescape source code from XML?
+	- include non source parameters as abap comments at the top of the file?
